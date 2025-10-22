@@ -1,0 +1,992 @@
+# ALPHA OMEGA ENGINE v2.0 — PART 2 OF 3
+
+## LAWS 121-200 + OPERATIONAL SYSTEMS
+
+**Continuation of Complete Production Edition**
+
+-----
+
+# ZR-121 TO ZR-150: PERFORMANCE & OPTIMIZATION LAWS
+
+### ZR-121 — Loop Complexity Reduction
+
+**Pattern:** O(n²) nested loops  
+**Fix:** Flatten to O(n) single-pass algorithms
+
+### ZR-122 — Redundant Calculation Elimination
+
+**Pattern:** Same calculation repeated  
+**Fix:** Cache in variable, compute once
+
+### ZR-123 — Plot Count Optimization
+
+**Pattern:** >64 plots causing slowdown  
+**Fix:** Consolidate; use conditional visibility
+
+### ZR-124 — Drawing Object Recycling
+
+**Pattern:** Memory leak from uncleaned objects  
+**Fix:** Reuse with var + delete pattern
+
+### ZR-125 — Array Growth Strategy
+
+**Pattern:** Unbounded array expansion  
+**Fix:** Circular buffer with max size
+
+### ZR-126 — Conditional Execution Gating
+
+**Pattern:** Expensive calcs every bar  
+**Fix:** Gate behind conditions
+
+### ZR-127 — Security Call Batching
+
+**Pattern:** Multiple calls to same symbol/TF  
+**Fix:** Batch into single call with tuple
+
+### ZR-128 — Historical Reference Optimization
+
+**Pattern:** Deep historical access in loops  
+**Fix:** Use ta.* functions
+
+### ZR-129 — Type Annotation Efficiency
+
+**Pattern:** Type inference overhead  
+**Fix:** Explicitly annotate returns/vars
+
+### ZR-130 — String Concatenation Performance
+
+**Pattern:** Repeated concat in loops  
+**Fix:** Minimize operations
+
+### ZR-131 — Table Update Frequency
+
+**Pattern:** Updating every bar unnecessarily  
+**Fix:** Update only with `barstate.islast`
+
+### ZR-132 — Matrix Operation Efficiency
+
+**Pattern:** Manual element-wise loops  
+**Fix:** Use matrix.* operations
+
+### ZR-133 — Early Return Optimization
+
+**Pattern:** Unnecessary computation after condition  
+**Fix:** Return immediately
+
+### ZR-134 — Scope Minimization
+
+**Pattern:** Globals when local suffices  
+**Fix:** Use local scope for temps
+
+### ZR-135 — Boolean Short-Circuit
+
+**Pattern:** Evaluating all conditions  
+**Fix:** Order by cost (cheap first)
+
+### ZR-136 — Label Text Length Limit
+
+**Pattern:** Long strings causing delay  
+**Fix:** Truncate to essentials
+
+### ZR-137 — Color Calculation Caching
+
+**Pattern:** Recalculating colors every bar  
+**Fix:** Pre-compute palette
+
+### ZR-138 — Input Validation Cost
+
+**Pattern:** Runtime validation every bar  
+**Fix:** Validate once with minval/maxval
+
+### ZR-139 — Plot Style Constant
+
+**Pattern:** Conditional styles evaluated  
+**Fix:** Use constant or separate plots
+
+### ZR-140 — Historical Function Warmup
+
+**Pattern:** Calling ta.* before sufficient history  
+**Fix:** Gate until warmup complete
+
+### ZR-141 — Request Security Caching
+
+**Pattern:** Same call in multiple places  
+**Fix:** Call once, cache result
+
+### ZR-142 — Array Preallocate Size
+
+**Pattern:** Growing from 0  
+**Fix:** Initialize with expected size
+
+### ZR-143 — Function Call Overhead
+
+**Pattern:** Simple functions in tight loops  
+**Fix:** Inline simple operations
+
+### ZR-144 — Barstate Check Frequency
+
+**Pattern:** Redundant checks  
+**Fix:** Check once, store in bool
+
+### ZR-145 — Drawing Object Limit Management
+
+**Pattern:** Approaching platform limits  
+**Fix:** Implement object pool with max
+
+### ZR-146 — Switch vs Nested If
+
+**Pattern:** Deep if-else chains  
+**Fix:** Use switch for cleaner/faster
+
+### ZR-147 — NA Propagation Control
+
+**Pattern:** NA spreading through calcs  
+**Fix:** Handle NA early with nz()
+
+### ZR-148 — Memory-Efficient Data Structures
+
+**Pattern:** Arrays when simple types suffice  
+**Fix:** Use simple variables
+
+### ZR-149 — Timezone Conversion Overhead
+
+**Pattern:** Repeated conversions  
+**Fix:** Convert once per bar
+
+### ZR-150 — Gradient Color Optimization
+
+**Pattern:** Calculating gradients every bar  
+**Fix:** Pre-compute palette array
+
+-----
+
+# ZR-151 TO ZR-180: PREDICTIVE & PREVENTIVE LAWS
+
+### ZR-151 — Future-Proof Namespace Usage
+
+**Prevention:** Always use explicit namespaces
+
+### ZR-152 — Version Comment Header
+
+**Prevention:** Include version tracking
+
+### ZR-153 — Input Boundary Defense
+
+**Prevention:** Always specify minval/maxval
+
+### ZR-154 — Color Alpha Channel Preparation
+
+**Prevention:** Use color.new() consistently
+
+### ZR-155 — Error Message Preparation
+
+**Prevention:** Add explicit error conditions
+
+### ZR-156 — Defensive Array Access
+
+**Prevention:** Verify array.size() > 0
+
+### ZR-157 — Type Annotation Discipline
+
+**Prevention:** Annotate all vars and functions
+
+### ZR-158 — Magic Number Elimination
+
+**Prevention:** Use named constants
+
+### ZR-159 — Division by Zero Prevention
+
+**Prevention:** Proactively guard all divisions
+
+### ZR-160 — Comment Density Standard
+
+**Prevention:** Minimum one comment per 10-15 lines
+
+### ZR-161 — Function Naming Convention
+
+**Prevention:** Use verb_noun pattern
+
+### ZR-162 — Global Variable Prefix
+
+**Prevention:** Prefix globals with g_
+
+### ZR-163 — Input Grouping Strategy
+
+**Prevention:** Group related inputs
+
+### ZR-164 — Tooltip Documentation
+
+**Prevention:** Add tooltips to all inputs
+
+### ZR-165 — Debug Mode Pattern
+
+**Prevention:** Implement debug toggle
+
+### ZR-166 — Repaint Warning Comments
+
+**Prevention:** Explicit warnings for repaint
+
+### ZR-167 — Strategy Default Parameters
+
+**Prevention:** Set realistic defaults
+
+### ZR-168 — Array Bounds Comment
+
+**Prevention:** Document array access rationale
+
+### ZR-169 — Time Zone Awareness
+
+**Prevention:** Specify timezone or document
+
+### ZR-170 — Null Coalescing Pattern
+
+**Prevention:** Centralize NA handling
+
+### ZR-171 — Version Migration Comments
+
+**Prevention:** Document behavior changes
+
+### ZR-172 — Maximum Historical Reference
+
+**Prevention:** Document max lookback
+
+### ZR-173 — Float Comparison Tolerance
+
+**Prevention:** Use tolerance-based comparison
+
+### ZR-174 — Input Validation Assertion
+
+**Prevention:** Runtime validation of combos
+
+### ZR-175 — Performance Budget Comment
+
+**Prevention:** Document computational cost
+
+### ZR-176 — Feature Flag Pattern
+
+**Prevention:** Gate new features behind flags
+
+### ZR-177 — Error State Enum Pattern
+
+**Prevention:** Use string state for errors
+
+### ZR-178 — Graceful Degradation
+
+**Prevention:** Implement sensible fallbacks
+
+### ZR-179 — Resource Cleanup Pattern
+
+**Prevention:** Explicit cleanup on changes
+
+### ZR-180 — Self-Documenting Code Structure
+
+**Prevention:** Break into named functions
+
+-----
+
+# ZR-181 TO ZR-200: EDGE CASE & PLATFORM LAWS
+
+### ZR-181 — Extended Hours Handling
+
+**Edge Case:** Session changes
+**Fix:** Use session checks
+
+### ZR-182 — Symbol Type Compatibility
+
+**Edge Case:** Crypto/forex differences
+**Fix:** Check syminfo.type
+
+### ZR-183 — Replay Mode Compatibility
+
+**Edge Case:** Non-forward time progression
+**Fix:** Use bar_index not time
+
+### ZR-184 — Tick-Based Timeframes
+
+**Edge Case:** No fixed time intervals
+**Fix:** Check timeframe.isticks
+
+### ZR-185 — Split/Dividend Adjustment
+
+**Edge Case:** Price comparisons across splits
+**Fix:** Document adjusted prices used
+
+### ZR-186 — Currency Pair Pip Size
+
+**Edge Case:** Different pip sizes
+**Fix:** Use syminfo.mintick
+
+### ZR-187 — Illiquid Symbol Gaps
+
+**Edge Case:** Trading gaps
+**Fix:** Use gaps=barmerge.gaps_off
+
+### ZR-188 — Micro/Nano Lot Handling
+
+**Edge Case:** Fractional quantities
+**Fix:** Use strategy.position_size
+
+### ZR-189 — Market Closed Detection
+
+**Edge Case:** Signals when closed
+**Fix:** Verify session state
+
+### ZR-190 — Overnight Gap Risk
+
+**Edge Case:** Stop losses don’t protect
+**Fix:** Document gap risk
+
+### ZR-191 — Index Symbol Limitations
+
+**Edge Case:** Non-tradable indices
+**Fix:** Add warning for indices
+
+### ZR-192 — Futures Expiration Handling
+
+**Edge Case:** Contract rolls
+**Fix:** Document roll behavior
+
+### ZR-193 — Minimum Price Movement
+
+**Edge Case:** Precision below mintick
+**Fix:** Round to mintick increments
+
+### ZR-194 — Cross-Symbol Correlation
+
+**Edge Case:** Different currencies
+**Fix:** Use currency parameter
+
+### ZR-195 — Partial Bar Repainting
+
+**Edge Case:** Incomplete bar calculations
+**Fix:** Gate on barstate.isconfirmed
+
+### ZR-196 — Symbol Resolution Limits
+
+**Edge Case:** Data not at all timeframes
+**Fix:** Handle security() failures
+
+### ZR-197 — Pre-Market/After-Hours Data
+
+**Edge Case:** Extended session mixing
+**Fix:** Explicitly define session scope
+
+### ZR-198 — Halted Symbol Handling
+
+**Edge Case:** Trading halts
+**Fix:** Detect stale data
+
+### ZR-199 — Negative Price Handling
+
+**Edge Case:** Futures/spreads negative
+**Fix:** Don’t use in denominators
+
+### ZR-200 — Maximum Symbol Name Length
+
+**Edge Case:** Platform limits
+**Fix:** Validate constructed strings
+
+-----
+
+# PART III — OPERATIONAL SYSTEMS
+
+## ERROR→LAW QUICK REFERENCE INDEX
+
+### Compiler Errors (Alphabetical)
+
+```
+"alertcondition message must be const" → ZR-033
+"alertcondition title must be const" → ZR-011
+"Array out of range" → ZR-008
+"Cannot assign to const" → ZR-038
+"Cannot call nz with argument" → ZR-004
+"Cannot compare series with na" → ZR-061
+"Cannot modify drawings on historical" → ZR-012
+"Cannot specify a type form 'const'" → ZR-002
+"Cannot use + between string and float" → ZR-028
+"division by zero" → ZR-022
+"Duplicate plot id" → ZR-056
+"end of line without line continuation" → ZR-001
+"indicator() missing required parameter" → ZR-090
+"Invalid format parameter" → ZR-091
+"lookahead not permitted" → ZR-006
+"out of memory" → ZR-015
+"plot title must be const string" → ZR-018
+"Script execution timeout" → ZR-017
+"strategy.close id mismatch" → ZR-013
+"Too many labels/lines/boxes" → ZR-007
+"Undeclared identifier" → ZR-005
+"Unexpected tab" → ZR-010
+"Unknown function" → ZR-016
+"Value with NA type cannot be assigned" → ZR-003
+"Variable already declared" → ZR-031
+```
+
+### Runtime Errors
+
+```
+"Array index out of range" → ZR-008, ZR-081
+"Circular reference" → ZR-098
+"Invalid symbol format" → ZR-099
+"Matrix dimensions incompatible" → ZR-082
+"Max bars back exceeded" → ZR-120
+"Polyline point limit exceeded" → ZR-084
+"String too long" → ZR-052
+"Table too large" → ZR-051
+"Too many security() calls" → ZR-100
+"varip not allowed in request.security" → ZR-119
+```
+
+-----
+
+## PREFLIGHT VERIFICATION PIPELINE
+
+### Pre-Emission Checklist
+
+```
+✅ STRUCTURAL INTEGRITY
+ □ //@version=6 header present
+ □ indicator() or strategy() with overlay param
+ □ All variables declared before use
+ □ Syntax clean (balanced parens, no trailing ops)
+ □ All functions have returns
+
+✅ TYPE SAFETY
+ □ No mixing series/simple without cast
+ □ Ternary branches same type
+ □ Array types homogeneous
+ □ No const with type annotation
+
+✅ NAMESPACE COMPLIANCE
+ □ All functions use proper namespace (ta., math., str., etc.)
+ □ No deprecated v5 functions
+ □ Color constants declared or prefixed
+ □ Enums with full path (shape.*, plot.style*)
+
+✅ DRAWING & OUTPUT
+ □ Drawing objects use var or recycle pattern
+ □ Plot titles const strings
+ □ Alert conditions use literals
+ □ Drawing calls in global scope or gated
+ □ Plot count ≤64
+
+✅ RUNTIME SAFETY
+ □ All divisions guarded against zero
+ □ Array access guarded with size checks
+ □ request.security() uses lookahead_off
+ □ No NA comparisons with == or !=
+ □ Historical refs checked vs bar_index
+
+✅ PERFORMANCE
+ □ No nested loops >O(n²)
+ □ Arrays have max size limits (≤200)
+ □ Redundant calcs cached
+ □ Heavy ops gated behind conditions
+ □ request.security() calls batched
+
+✅ MAINTAINABILITY
+ □ Magic numbers → named constants
+ □ Complex logic → named functions
+ □ Comments for non-obvious logic
+ □ Inputs have defaults and constraints
+
+✅ EDGE CASES
+ □ Warmup period handled (bar_index checks)
+ □ Bar state conditions explicit
+ □ Symbol type considerations documented
+ □ Session/timezone awareness where applicable
+```
+
+### Automated Verification Sequence
+
+```
+STEP 1: Parse Code Structure
+  - Extract variable declarations
+  - Map function definitions
+  - Identify draw calls and scope
+  - Count plots/objects
+
+STEP 2: Apply ZR-Law Map
+  - Cross-reference all 200 laws
+  - Flag violations
+  - Generate fix recommendations
+
+STEP 3: Simulate Execution
+  - Mental trace through bars
+  - Identify runtime errors
+  - Check NA propagation
+  - Verify warmup behavior
+
+STEP 4: Performance Analysis
+  - Estimate complexity
+  - Count expensive operations
+  - Verify resource limits
+
+STEP 5: Generate Audit Receipt
+  - Document laws applied
+  - List assumptions
+  - Provide metrics
+  - Include ZEI score
+
+STEP 6: User Confirmation Gate
+  - Present analysis summary
+  - Request confirmation
+  - Apply Δ14 if ambiguous
+```
+
+-----
+
+## RULESMITH APPEND & DEDUP ENGINE
+
+### Law Discovery Algorithm
+
+```
+FUNCTION discoverNewLaw(errorMessage):
+  
+  1. NORMALIZE message:
+     - lowercase, strip punctuation
+     - collapse spaces
+     - extract key phrases
+
+  2. COMPUTE SIMILARITY to existing laws:
+     - For each ZR-001 to ZR-200:
+       - Levenshtein distance
+       - Semantic similarity
+       - Alias matches
+     - If similarity >0.85: DUPLICATE
+
+  3. HANDLE DUPLICATE:
+     - Append as alias to similar law
+     - Update alias list
+     - Log merge
+     - RETURN existing law ID
+
+  4. CREATE NEW LAW (if unique):
+     - Assign next ID (ZR-201...)
+     - Extract pattern
+     - Synthesize root cause
+     - Generate fix
+     - Add proof/example
+     - Set aliases
+
+  5. VALIDATION:
+     - Verify structure complete
+     - Check contradictions
+     - Run consistency check
+     - Generate test case
+
+  6. APPEND TO REGISTRY:
+     - Insert chronologically
+     - Update index
+     - Increment counter
+     - Calculate new ZEI
+
+  7. AWAIT USER CONFIRMATION:
+     - Present for review
+     - Request validation
+     - If confirmed: PERSIST
+     - If rejected: ROLLBACK/refine
+
+RETURN newLawID or existingLawID
+```
+
+### Deduplication Matrix
+
+```
+Similarity Thresholds:
+- 0.95-1.00: Exact duplicate (merge as alias)
+- 0.85-0.94: Very similar (prompt merge)
+- 0.70-0.84: Related (cross-ref but separate)
+- <0.70: Unique (create new law)
+
+Semantic Clustering:
+- Group by error type (compiler/runtime/perf)
+- Sub-group by namespace (ta./array./strategy.)
+- Cross-reference related laws
+
+Alias Management:
+- Each law maintains equivalent messages
+- Aliases normalized for matching
+- Regex patterns for flexible matching
+```
+
+-----
+
+## MIRRORCYCLE AUDIT SYSTEM
+
+### Recursive Consistency Check
+
+```
+FUNCTION mirrorCycleAudit(code, trace):
+  
+  PHASE 1: Structural Consistency
+    - Verify referenced laws exist
+    - Check application order
+    - Ensure no contradictions
+    - Validate logical flow
+    SCORE: structural_consistency (0.0-1.0)
+  
+  PHASE 2: Causal Integrity
+    - Trace elements to laws
+    - Verify fix addresses cause
+    - Check prevention complete
+    - Validate no side effects
+    SCORE: causal_integrity (0.0-1.0)
+  
+  PHASE 3: Context Fidelity
+    - Compare to mission vector
+    - Verify requirements met
+    - Check constraint compliance
+    - Validate scope alignment
+    SCORE: context_fidelity (0.0-1.0)
+  
+  PHASE 4: Semantic Drift Detection
+    - Compare to stable state
+    - Measure deviation
+    - Check terminology drift
+    - Identify bias
+    SCORE: semantic_stability (0.0-1.0)
+  
+  PHASE 5: Provenance Verification
+    - Verify claims traceable
+    - Check for fabrication
+    - Validate examples
+    - Ensure supported statements
+    SCORE: provenance_completeness (0.0-1.0)
+  
+  AGGREGATE:
+    audit_score = weighted_average([
+      structural * 0.25,
+      causal * 0.25,
+      context * 0.20,
+      semantic * 0.15,
+      provenance * 0.15
+    ])
+  
+  IF audit_score < 0.95:
+    TRIGGER auto_correction()
+    LOG deviations
+    ROLLBACK to stable
+    REAPPLY with corrections
+  
+  RETURN audit_receipt
+```
+
+-----
+
+## TESTING & VALIDATION FRAMEWORK
+
+### Unit Test Pattern
+
+```pinescript
+//@version=6
+indicator("Test Suite", overlay=false)
+
+// TEST: Division by zero (ZR-022)
+testDivByZero() =>
+    result = 100 / math.max(0, 1e-10)
+    result > 0
+
+// TEST: Array bounds (ZR-008)
+testArrayBounds() =>
+    arr = array.new_float(5, 0)
+    idx = 10
+    safe = math.min(idx, array.size(arr) - 1)
+    safe == 4
+
+// TEST: NA handling (ZR-061)
+testNA() =>
+    val = na
+    na(val) == true
+
+// Execute and display
+pass1 = testDivByZero()
+pass2 = testArrayBounds()
+pass3 = testNA()
+
+var table results = table.new(position.top_right, 2, 4)
+if barstate.islast
+    table.cell(results, 0, 0, "Test", bgcolor=color.gray)
+    table.cell(results, 1, 0, "Result", bgcolor=color.gray)
+    
+    table.cell(results, 0, 1, "Div by Zero")
+    table.cell(results, 1, 1, pass1 ? "✅" : "❌", 
+        bgcolor=pass1 ? color.green : color.red)
+    
+    table.cell(results, 0, 2, "Array Bounds")
+    table.cell(results, 1, 2, pass2 ? "✅" : "❌",
+        bgcolor=pass2 ? color.green : color.red)
+    
+    table.cell(results, 0, 3, "NA Check")
+    table.cell(results, 1, 3, pass3 ? "✅" : "❌",
+        bgcolor=pass3 ? color.green : color.red)
+
+plot(pass1 and pass2 and pass3 ? 1 : 0, 
+    "All Pass", color=color.green, linewidth=3)
+```
+
+-----
+
+## V5→V6 MIGRATION RULESET
+
+### Critical Breaking Changes
+
+**1. Namespace Requirements**
+
+```
+v5 → v6 Migration:
+sma() → ta.sma()
+ema() → ta.ema()
+rsi() → ta.rsi()
+macd() → ta.macd()
+highest() → ta.highest()
+lowest() → ta.lowest()
+crossover() → ta.crossover()
+crossunder() → ta.crossunder()
+
+abs() → math.abs()
+max() → math.max()
+min() → math.min()
+round() → math.round()
+floor() → math.floor()
+ceil() → math.ceil()
+
+tostring() → str.tostring()
+tonumber() → str.tonumber()
+```
+
+**2. Request.Security Syntax**
+
+```
+v5: security(syminfo.tickerid, "D", close)
+v6: request.security(syminfo.tickerid, "D", close,
+      lookahead=barmerge.lookahead_off,
+      gaps=barmerge.gaps_off)
+```
+
+**3. Input Functions**
+
+```
+v5: input(20, title="Length")
+v6: input.int(20, title="Length")
+
+v5: input(true, title="Show")
+v6: input.bool(true, title="Show")
+```
+
+**4. Color Transparency**
+
+```
+v5: plot(close, color=color.blue, transp=50)
+v6: plot(close, color=color.new(color.blue, 50))
+```
+
+**5. Strategy Direction**
+
+```
+v5: strategy.entry("Long", true)
+v6: strategy.entry("Long", strategy.long)
+```
+
+### Complete Migration Checklist
+
+```
+□ VERSION HEADER
+  □ //@version=5 → //@version=6
+  
+□ NAMESPACE MIGRATION
+  □ Add ta. to technical indicators
+  □ Add math. to math functions
+  □ Add str. to string functions
+  □ Add color. to color functions
+  □ Add array. to array functions
+  
+□ FUNCTION RENAMES
+  □ security() → request.security()
+  □ study() → indicator()
+  
+□ INPUT FUNCTIONS
+  □ input() → input.int/float/bool/string()
+  □ input.resolution() → input.timeframe()
+  
+□ COLOR TRANSPARENCY
+  □ transp= → color.new()
+  
+□ STRATEGY DIRECTION
+  □ true/false → strategy.long/short
+  
+□ SECURITY CALLS
+  □ Add lookahead parameter
+  □ Add gaps parameter
+  
+□ VAR DECLARATIONS
+  □ Explicitly type all vars
+```
+
+-----
+
+## TRADINGVIEW PLATFORM LIMITS (2025 Q3)
+
+### Hard Limits
+
+|Resource                |Limit               |Law Ref|
+|------------------------|--------------------|-------|
+|Lines per script        |500                 |ZR-007 |
+|Labels per script       |500                 |ZR-007 |
+|Boxes per script        |500                 |ZR-059 |
+|Polylines per script    |100                 |ZR-084 |
+|Plot outputs            |64                  |ZR-123 |
+|request.security() calls|40                  |ZR-100 |
+|Array size              |~100,000            |ZR-015 |
+|String length           |~4096 chars         |ZR-052 |
+|Max bars back           |~5000 (configurable)|ZR-120 |
+|Script execution        |~20s per bar        |ZR-017 |
+|Indicator precision     |0-16 decimals       |ZR-092 |
+
+### Recommended Limits (Performance)
+
+|Resource          |Recommended|Reason            |
+|------------------|-----------|------------------|
+|Lines/Labels/Boxes|≤50 active |Smooth rendering  |
+|Array elements    |≤200       |Memory efficiency |
+|Plot count        |≤10        |Chart clarity     |
+|request.security()|≤10        |Execution speed   |
+|Loop iterations   |≤500/bar   |Timeout prevention|
+|Table cells       |≤100       |Render performance|
+
+-----
+
+## PRODUCTION DEPLOYMENT CHECKLIST
+
+### Pre-Deployment Validation
+
+```
+□ CODE QUALITY
+  ✅ Zero compilation errors
+  ✅ Zero warnings (or documented)
+  ✅ All 200 ZR-laws verified
+  ✅ Code reviewed and commented
+  ✅ Magic numbers → constants
+  ✅ Clear function names
+
+□ FUNCTIONAL TESTING
+  ✅ Tested multiple symbols
+  ✅ Tested multiple timeframes
+  ✅ Tested market conditions (bull/bear/sideways)
+  ✅ Edge cases handled
+  ✅ Alerts trigger correctly
+  ✅ Visual elements render
+
+□ PERFORMANCE VALIDATION
+  ✅ Script loads <5 seconds
+  ✅ No execution timeouts
+  ✅ No memory errors
+  ✅ Chart responsive
+  ✅ Object counts within limits
+
+□ USER EXPERIENCE
+  ✅ Sensible input defaults
+  ✅ Clear input tooltips
+  ✅ Logical input grouping
+  ✅ Error states communicated
+  ✅ Performance dashboard (if applicable)
+  ✅ Documentation complete
+
+□ STRATEGY-SPECIFIC (if applicable)
+  ✅ Commission/slippage configured
+  ✅ Realistic position sizing
+  ✅ No lookahead bias
+  ✅ Stop loss/take profit working
+  ✅ Backtest results validated
+  ✅ Forward testing completed
+  ✅ Risk parameters tested
+
+□ DOCUMENTATION
+  ✅ Purpose and usage documented
+  ✅ Known limitations listed
+  ✅ Version number present
+  ✅ Contact info (if shared)
+  ✅ License specified
+
+□ FINAL CHECKS
+  ✅ Title and shorttitle set
+  ✅ overlay parameter correct
+  ✅ max_bars_back sufficient
+  ✅ No debug code
+  ✅ Production-ready
+```
+
+### Deployment Decision Matrix
+
+|Criterion    |Pass Threshold    |Status|
+|-------------|------------------|------|
+|Compilation  |Zero errors       |✅/❌   |
+|Performance  |<5s load          |✅/❌   |
+|Test Coverage|3+ symbols, 3+ TFs|✅/❌   |
+|Documentation|Complete          |✅/❌   |
+|User Feedback|No critical issues|✅/❌   |
+
+**Decision:**
+
+- **ALL ✅** → DEPLOY
+- **ANY ❌** → BLOCK, address issues
+
+-----
+
+## AUDIT RECEIPT TEMPLATE
+
+```json
+{
+  "receipt_id": "AΩ-AUDIT-20251021-001",
+  "timestamp": "2025-10-21T14:30:00Z",
+  "engine_version": "2.0.0",
+  
+  "mission_vector": {
+    "objective": "Generate zero-error Pine Script v6",
+    "checksum": "7f8a3bc9d2e1",
+    "alignment_score": 0.98
+  },
+  
+  "laws_applied": {
+    "total_count": 23,
+    "law_ids": ["ZR-001", "ZR-006", "ZR-022", "..."],
+    "coverage_percentage": 100.0
+  },
+  
+  "verification_metrics": {
+    "zero_error_index": 1.000,
+    "compilation_status": "SUCCESS",
+    "warning_count": 0,
+    "structural_consistency": 0.99,
+    "causal_integrity": 0.98,
+    "context_fidelity": 0.97,
+    "semantic_stability": 0.99,
+    "provenance_completeness": 1.00
+  },
+  
+  "tests_summary": {
+    "passed": 15,
+    "failed": 0,
+    "skipped": 0
+  },
+  
+  "performance_profile": {
+    "complexity": "O(n)",
+    "plot_count": 3,
+    "drawing_objects": 5,
+    "security_calls": 2,
+    "load_time": "<2s"
+  },
+  
+  "certification": "✅ PRODUCTION READY",
+  "generated_by": "ALPHA OMEGA ENGINE v2.0"
+}
+```
+
+-----
+
+**END OF PART 2/3**
+
+**Next:** Part 3 contains Golden Templates Library + Complete Reference Materials
+
+**Status:** Laws 121-200 + All Operational Systems Complete ✅
